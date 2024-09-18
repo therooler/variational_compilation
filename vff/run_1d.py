@@ -451,7 +451,7 @@ def main(config):
                         unitary_loss = np.load(save_path_depth + f'unitary_loss.npy')
                     print(f"Unitary loss for = {unitary_loss}")
                 elif HST:
-                    if not os.path.exists(save_path_depth + f'unitary_loss.npy'):
+                    if not os.path.exists(save_path_depth + f'hst_loss.npy'):
                         if hamiltonian != 'heisenberg_2d':
                             psi_pqc = qmps_ansatz(L, in_depth=depth)
                         else:
