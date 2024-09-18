@@ -6,69 +6,8 @@ Created on Tue Apr  9 13:44:44 2024
 """
 import numpy as np
 import scipy.linalg as spla
-# import tenpy
-# from tenpy.algorithms import tebd
-#
-# import quimb.tensor as qtn
 from .trotter import TwoTermsOrder1, TwoTermsOrder2, TwoTermsOrder4, TwoTermsOrder6, I, Px, Py, Pz
 
-
-# def _measurement(eng, data):
-#     keys = ['t', 'entropy', 'Z', 'ZZ', 'trunc_err']
-#     if data is None:
-#         data = dict([(k, []) for k in keys])
-#     data['t'].append(eng.evolved_time)
-#     data['entropy'].append(eng.psi.entanglement_entropy())
-#     data['trunc_err'].append(eng.trunc_err.eps)
-#     return data
-#
-#
-# def tenpy_to_quimb(mps_tenpy: tenpy.MPS, L: int):
-#     tn = qtn.TensorNetwork()
-#     for i in range(L):
-#         array = mps_tenpy.get_B(i).to_ndarray()
-#         if i == 0:
-#             inds = (f'bond{i + 1}', f'k{i}')
-#             tensor = qtn.Tensor(array[0].T, inds, )
-#         elif i == L - 1:
-#             inds = (f'bond{i}', f'k{i}')
-#             tensor = qtn.Tensor(array[:, :, 0], inds, )
-#         else:
-#             inds = (f'bond{i}', f'bond{i + 1}', f'k{i}')
-#             tensor = qtn.Tensor(np.transpose(array, axes=(0, 2, 1)), inds)
-#         tn = tn & tensor
-#
-#     return qtn.MatrixProductState(arrays=[tn.tensors[i].data for i in range(L)])
-#
-#
-# def apply_tebd_tenpy(psi0: tenpy.MPS, H: tenpy.SpinChainNNN, t: float, dt: float, tebd_opts: dict,
-#                      PRINT: bool = False):
-#     if PRINT:
-#         tenpy.tools.misc.setup_logging(to_stdout="INFO")
-#     L = len(psi0.sites) * 2
-#     chi_max = tebd_opts['max_bond']
-#     svd_min = tebd_opts['cutoff']
-#     tebd_params = {
-#         'N_steps': 1,
-#         'dt': dt,
-#         'order': 4,
-#         'trunc_params': {'chi_max': chi_max, 'svd_min': svd_min},
-#     }
-#     psi = psi0.copy()
-#     eng = tebd.TEBDEngine(psi, H, tebd_params)
-#     data = _measurement(eng, None)
-#     while eng.evolved_time < t:
-#         eng.run()
-#         _measurement(eng, data)
-#     psi_initial_split = psi0.copy()
-#     psi_initial_split.group_split({'chi_max': 4})
-#
-#     psi_final_split = psi.copy()
-#     psi_final_split.group_split({'chi_max': chi_max})
-#     quimb_initial = tenpy_to_quimb(psi_initial_split, L)
-#     quimb_final = tenpy_to_quimb(psi_final_split, L)
-#     return quimb_initial, quimb_final, data['trunc_err']
-#
 
 def tebd_ising_nnn(psi, L, t, J, V, trotter_steps, cutoff=1e-8, p=2):
     split_opts = {}

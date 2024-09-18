@@ -1,11 +1,5 @@
 import quimb as qu
 import quimb.tensor as qtn
-import numpy as np
-import scipy
-
-from .trotter import TwoTermsOrder2, Px, Py, Pz
-from .mps_circuit import apply_circuit_to_state
-
 
 def tensor_to_gate(tensor):
     data = tensor.data.reshape(4, 4)

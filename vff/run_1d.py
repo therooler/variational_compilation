@@ -21,19 +21,19 @@ import warnings
 
 warnings.simplefilter("ignore", UserWarning)
 
-from utils.plot_utils import plot_losses
+from .utils.plot_utils import plot_losses
 # Everything here is based on QUIMB and PyTorch
-from tn.mps_circuit import TNModel, qmps_brick, qmps_brick_quasi_1d, create_targets, load_gates
-from tn.data_states import random_product_state, \
+from .tn.mps_circuit import TNModel, qmps_brick, qmps_brick_quasi_1d, create_targets, load_gates
+from .tn.data_states import random_product_state, \
     random_mps_state, get_make_data_set_fn, random_U1_state
-from tn.tebd import ising_hamiltonian_quimb, \
+from .tn.tebd import ising_hamiltonian_quimb, \
     longitudinal_ising_hamiltonian_quimb, \
     heisenberg_hamiltonian_quimb, \
     mbl_hamiltonian_quimb
-from tn.trotter import trotter_evolution_optimized_nn_ising_tn, \
+from .tn.trotter import trotter_evolution_optimized_nn_ising_tn, \
     trotter_evolution_optimized_nn_heisenberg_tn, trotter_evolution_optimized_nn_mbl_tn, \
     compress_trotterization_into_circuit, trotter_evolution_optimized_ising_nnn_tn
-from tn.hst import hst
+from .tn.hst import hst
 # For next-nearest neighbors we use Tenpy
 import quimb.tensor as qtn
 

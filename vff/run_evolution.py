@@ -13,19 +13,19 @@ import numpy as np
 import os
 
 import pickle
-from tn.data_states import random_product_state, random_mps_state, random_U1_state, \
+from .tn.data_states import random_product_state, random_mps_state, random_U1_state, \
     plus_state, get_make_data_set_fn
-from tn.mps_circuit import TNModel, qmps_brick, qmps_brick_quasi_1d, create_targets, apply_circuit_to_state, \
+from .tn.mps_circuit import TNModel, qmps_brick, qmps_brick_quasi_1d, create_targets, apply_circuit_to_state, \
     apply_2d_circuit_to_state
 
-from run_1d import main as main_run_1d
+from .run_1d import main as main_run_1d
 import quimb.tensor as qtn
 
-from tn.tebd import ising_hamiltonian_quimb, \
+from .tn.tebd import ising_hamiltonian_quimb, \
     longitudinal_ising_hamiltonian_quimb, \
     heisenberg_hamiltonian_quimb, \
     mbl_hamiltonian_quimb
-from tn.tebd_quasi_1d import snake_index
+from .tn.tebd_quasi_1d import snake_index
 import random
 
 

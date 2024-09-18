@@ -4,12 +4,11 @@ import quimb.tensor as qtn
 import quimb
 import numpy as np
 import scipy.linalg as spla
-import tenpy
 import tqdm
 
-from tn.tebd import apply_tebd
-from tn.tebd_quasi_1d import quasi_1d_tebd_heisenberg
-from tn.tebd_nnn_ising import tebd_ising_nnn
+from .tebd import apply_tebd
+from .tebd_quasi_1d import quasi_1d_tebd_heisenberg
+from .tebd_nnn_ising import tebd_ising_nnn
 
 
 def get_make_data_set_fn(hamiltonian, H, tebd_granularity: dict, tebd_opts: dict, PRINT: bool):
@@ -64,20 +63,10 @@ def plus_state(L: int, seed: int = None):
     return psi0
 
 
-def random_product_state_tenpy(H, L: int, seed: int = None):
-    np.random.seed(seed)
-    return tenpy.MPS.from_desired_bond_dimension([H.lat.site(i) for i in range(L // 2)], 1)
-
-
 def random_mps_state(L: int, bond_dim, seed: int = None):
     mps = qtn.MPS_rand_state(L, bond_dim=bond_dim, dtype='complex128', seed=seed)
     mps.compress()
     return mps
-
-
-def random_mps_state_tenpy(H, L: int, bond_dim, seed: int = None):
-    np.random.seed(seed)
-    return tenpy.MPS.from_desired_bond_dimension([H.lat.site(i) for i in range(L // 2)], bond_dim)
 
 
 def random_sz_conserving_state(L: int, total_charge: int = 0, seed: int = None, shallow_circuit: bool = True):
