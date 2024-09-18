@@ -274,12 +274,12 @@ def figure_3c():
                 data_total += 1
                 try:
                     data[f"{i_L}_{L}_train"] = np.load(path + f'L_{L * 2 ** i_L}/depth_{depth}/train_loss.npy')
-                except:
+                except FileNotFoundError:
                     data[f"{i_L}_{L}_train"] = np.nan
                 try:
                     data[f"{i_L}_{L}_test"] = np.load(
                         path + f'L_{L * 2 ** i_L}/depth_{depth}/test_loss_{config["test_size"]}.npy')
-                except:
+                except FileNotFoundError:
                     data[f"{i_L}_{L}_test"] = np.nan
                     missing_data += 1
         print(f"Data found: {data_total - missing_data}/{data_total}")
