@@ -32,3 +32,16 @@ python -u reproduce.py
 ## Help
 
 Please reach out on Github or via email if you have any questions about the code.
+
+## A minimal piece of code
+
+Since the code is complex and not well documented, I added a piece of code in `vff` called `run_1d_minimal.py`
+that can be used to run a simple example. Most of the code in `run_1d_minimal.py` is removed
+and only everything necessary to run the `hotstart` method remains. The following command
+
+```bash
+python -u run_1d_minimal.py
+```
+
+should compile an `L=16` 1D ISing Hamiltonian for `t=0.5` within a couple of seconds.
+
