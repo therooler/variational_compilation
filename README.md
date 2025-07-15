@@ -1,6 +1,6 @@
 # Code for "Scalable quantum dynamics compilation via quantum machine learning"
 
-Here, we provide Python code to reproduce the results of **ARXIV LINK**
+Here, we provide Python code to reproduce the results of [https://arxiv.org/abs/2409.16346](https://arxiv.org/abs/2409.16346).
 ## Instructions 
 Clone the repo and create a fresh Conda environment with Python 3.10 and use Pip to install `requirements.txt`. 
 Alternatively, you can run `sh setup.sh`, which will create the conda environemnt for you and activate it. 
